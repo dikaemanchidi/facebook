@@ -1,0 +1,14 @@
+
+<%= link_to 'New Post', new_post_path %>
+<% @posts.each do |post| %>
+<div class="card">
+  <div class="card-header">
+  <%= post.user.name %>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= image_tag post.image.url, class:"img" %></h5>
+    <p class="card-text"><%= post.caption %></p>
+  </div>
+  <%= link_to 'Show', post,class:"btn btn-primary" %> | <%= link_to 'Edit', edit_post_path(post),class:"btn btn-success" %> | <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' },class:"btn btn-danger" %>
+</div><br><br>
+<% end %>

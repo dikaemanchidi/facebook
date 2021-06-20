@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+<div class="card">
+  <div class="card-header">
+    Post in details
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= image_tag @post.image.url, class:"img_preview" %></h5>
+    <p class="card-text"><%= @post.caption %></p>
+    <%= link_to 'Edit', edit_post_path(@post),class:"btn btn-primary" %> |
+    <%= link_to 'Back', posts_path,class:"btn btn-primary" %>
+  </div>
+</div>
