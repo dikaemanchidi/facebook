@@ -11,13 +11,10 @@ class PostsController < ApplicationController
   end
 
   # GET /posts/new
-    def new
-      if params[:back]
-        @post = Post.new(post_params)
-      else
+  def new
     @post = current_user.posts.build
   end
-end
+
   # GET /posts/1/edit
   def edit
   end
@@ -48,11 +45,11 @@ end
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
-  end
     def confirm
-        @post = Post.new(post_params)
-        render :new if @post.invalid?
-      end
+      @post = Post.new(post_params)
+      @post.user_id = current_user.id
+    end
+  end
 
   # DELETE /posts/1 or /posts/1.json
   def destroy
@@ -71,6 +68,6 @@ end
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:image, :image_cache, :content, :user_id)
+      params.require(:post).permit(:image, :image_cache, :caption, :user_id)
     end
 end

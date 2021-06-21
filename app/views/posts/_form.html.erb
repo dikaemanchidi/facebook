@@ -1,13 +1,7 @@
-<%= form_with(model: post) do |form| %>
+<%= form_with(model: post, local: true, url: choose_new_or_edit) do |form| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-      <ul>
-        <% post.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
     </div>
   <% end %>
 
@@ -17,8 +11,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :caption %>
-    <%= form.text_area :caption %>
+    <%= form.label :content %>
+    <%= form.text_area :content %>
   </div>
 
   <div class="field">
